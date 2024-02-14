@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root to: 'homes#top'
   devise_for :users #devise を使用する際に URL として users を含む
   
-  resources :post_images, only: [:new, :create, :index, :show]
+  resources :post_images, only: [:new, :create, :index, :show, :destroy]
   # 不要なルーティングが実行されないようにonlyを設定
   
   get 'homes/about', as: 'about' #get "/homes/about" => "homes#about", as: "about"??
