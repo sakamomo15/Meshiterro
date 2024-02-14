@@ -16,6 +16,9 @@
       <% if user_signed_in? %>
       <!--ログイン=>true 未ログイン=>false-->
         <li>
+          <%= link_to "投稿フォーム", new_post_image_path %>
+        </li>
+        <li>
           <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
           <!--link_toのHTTPメソッドはデフォでGETだが、ログアウトはdeleteにする-->
         </li>

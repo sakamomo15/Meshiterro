@@ -1,11 +1,11 @@
-class CreatePostimages < ActiveRecord::Migration[6.1]
+class CreatePostImages < ActiveRecord::Migration[6.1]
   def change
     create_table :post_images do |t|
-      # t.integer :id 自動作成されるので不要
+      # t.integer :id =>すでに実装されているので不要
       t.string :shop_name
       t.text :caption
       t.integer :user_id
-      
+
       t.timestamps
     end
   end
