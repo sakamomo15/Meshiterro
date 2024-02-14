@@ -4,14 +4,13 @@ class PostImage < ApplicationRecord
   belongs_to :user
   # アソシエーション：1:Nの関係をN側から示す
 
-  def get_image
+  def get_image # アクションとは少し違い、カラムのように特定の処理を名前で呼び出せる
     unless image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')
       image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
-    else
-      'no_image.jpg'
     end
+    image
   end
-  # アクションとは少し違い、カラムのように特定の処理を名前で呼び出せる
+# =>画像が設定されない場合はapp/assets/imagesの中のno_image.jpgをデフォルト画像としてActiveStorageに格納し、それを表示
   
 end
