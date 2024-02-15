@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   resources :post_images, only: [:new, :create, :index, :show, :destroy] do
+    resource :favorite, only: [:create, :destroy]
+    # resource(単数形)だとURLに/:idが含まれない <= 1投稿1いいねなのでユーザーidとpost_image_idが分かれば良い
+    # resourc：それ自身のidが分からなくても、関連する他のモデルのidから特定できる場合に
     resources :post_comments, only: [:create, :destroy]
   end
     # 投稿画像に対してコメントされる => post_commentsとpost_imagesは親子関係(ネスト) => ネストしたURL： /post_images/:post_image_id/post_comments(.:format)
