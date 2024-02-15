@@ -3,6 +3,7 @@ class PostImage < ApplicationRecord
   has_one_attached :image
   belongs_to :user
   # アソシエーション：1:Nの関係をN側から示す
+  has_many :post_comments, dependent: :destroy
 
   def get_image # アクションとは少し違い、カラムのように特定の処理を名前で呼び出せる
     unless image.attached?
