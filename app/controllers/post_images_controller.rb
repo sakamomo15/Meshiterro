@@ -23,7 +23,8 @@ class PostImagesController < ApplicationController
   end
 
   def index
-    @post_images = PostImage.all
+    @post_images = PostImage.page(params[:page])
+      # .allではなくkaminari使用で1ページに指定数のデータを新しい順に取得
   end
 
   def show

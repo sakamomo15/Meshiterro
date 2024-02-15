@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
-    @post_images = @user.post_images
+    @post_images = @user.post_images.page(params[:page])
+    # kaminari使用で1ページに指定数のデータを新しい順に取得
   end
 
   def edit
